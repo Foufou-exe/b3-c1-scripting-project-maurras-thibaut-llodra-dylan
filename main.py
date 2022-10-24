@@ -15,5 +15,10 @@ def read_csv_to_list() -> list:
             list_data.append(line)
     return list_data
 
-data = read_csv_to_list()
-print(data)
+def parsing_line(line) -> list:
+    line.pop(0)
+    line.pop(2)
+    line.pop(2)
+    line.pop(2)
+    line.pop(2)
+    return line

@@ -8,9 +8,9 @@ Rendu prevu le 04/12/2022\
 -Parsing 
          
 -    **Nettoyage :**
+- - Supprimer la colone ID logement
 - - Supprimer toutes les lignes avec moins une cellule vide\
-- - Suppression des Colonnes A,D,E,F,G
+- - Addition des consommation sur les deux années dans une colonne
 
 Fichier Final : **clean.csv** \
-**Regroupement par organisation**
-
+**Tri par type(alphabetique) et consommation annuelle total(decroissant)**

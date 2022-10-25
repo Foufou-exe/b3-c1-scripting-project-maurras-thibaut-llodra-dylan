@@ -2,7 +2,7 @@
 import csv 
 
 #variables
-filename = "Sample.csv"
+filename = "conso-annuelles_v1.csv"
 fileout = "clean.csv"
 
 #Fonction
@@ -15,6 +15,7 @@ def parsing_line(line) -> list:
     list_element_line.pop(2)
     list_element_line.pop(2)
     list_element_line.pop(2)
+    
     #Verifie s'il n'ya pas de cellule vide
     empty = False
     for element in list_element_line:
@@ -32,7 +33,7 @@ def write_clean_list_to_csv(list_cleaned):
 def read_csv_line():
     liste_clean = []
     with open(filename, 'r') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter = ',')
+        csv_reader = csv.reader(csv_file, delimiter = ';')
         next(csv_reader)
         for line in csv_reader:
             liste_clean_temp = parsing_line(line)

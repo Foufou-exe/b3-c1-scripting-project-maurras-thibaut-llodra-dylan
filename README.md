@@ -1,7 +1,8 @@
 # Projet Python 
 #### Effectué par @Foufou-exe et @thorbeorn 
-### Mission : 
+Rendu prevu le 04/12/2022\
 
+### Mission : 
 -Lire le .CSV\
 -Extraire les Données\
 -Parsing 

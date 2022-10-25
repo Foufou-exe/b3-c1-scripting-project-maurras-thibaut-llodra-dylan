@@ -29,7 +29,9 @@ def sort_list_to_csv(list_all_data):
     #init de la variable tableau 'list_all_data' qui contien tout les items de la ligne csv
     list_all_element = list_all_data
     #Tri par ordre alphabetique le type des elements de la list
+    # Déclaration d'un dictionnaire vide
     dico_type = {}
+    # Ajout des éléments dans le dictionnaire
     for data_list in list_all_element:
             if data_list[2] in dico_type:
                 list_value_temp = dico_type[data_list[2]]
@@ -37,15 +39,18 @@ def sort_list_to_csv(list_all_data):
                 dico_type[data_list[2]] = list_value_temp
             else:
                 dico_type[data_list[2]] = [data_list]
+    # Tri des elements par ordre alphabetique
     for key in dico_type:
         list_keys = sorted(dico_type[key], key=lambda inner_list: inner_list[1], reverse=True)
         dico_type[key] = list_keys
     list_ordered_item = []
+    # Ajouts des elements dans la list trier
     for i in sorted(dico_type.keys()):
         for item in dico_type[i]:
             list_ordered_item.append(item)
     return list_ordered_item
 
+# Fonction d'écriture dans le nouveau fichier csv
 def write_clean_list_to_csv(list_cleaned):
     with open(fileout, 'w') as csv_file:
         writer = csv.writer(csv_file)

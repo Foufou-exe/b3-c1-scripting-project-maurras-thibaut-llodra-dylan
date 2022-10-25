@@ -31,18 +31,20 @@ def sort_list_to_csv(list_all_data):
     #Tri par ordre alphabetique le type des elements de la list
     dico_type = {}
     for data_list in list_all_element:
-        if data_list[2] in dico_type:
-            print(data_list)
-            print(dico_type)
-            dico_type_temp = {dico_type[data_list[2]], dico_type[data_list[2]].append(data_list)}
-            print(dico_type_temp)
-            #dico_type[data_list[2]] = dico_type[data_list[2]]
-        else:
-            dico_type[data_list[2]] = [data_list]
-    #list_all_element = sorted(list_all_element, key=lambda inner_list: inner_list[2])
-    #Tri par ordre decroissant le total des années des elements de la list
-    #list_all_element = sorted(list_all_element, key=lambda inner_list: inner_list[1], reverse=True)
-    return list_all_element
+            if data_list[2] in dico_type:
+                list_value_temp = dico_type[data_list[2]]
+                list_value_temp.append(data_list)
+                dico_type[data_list[2]] = list_value_temp
+            else:
+                dico_type[data_list[2]] = [data_list]
+    for key in dico_type:
+        list_keys = sorted(dico_type[key], key=lambda inner_list: inner_list[1], reverse=True)
+        dico_type[key] = list_keys
+    list_ordered_item = []
+    for i in sorted(dico_type.keys()):
+        for item in dico_type[i]:
+            list_ordered_item.append(item)
+    return list_ordered_item
 
 def write_clean_list_to_csv(list_cleaned):
     with open(fileout, 'w') as csv_file:

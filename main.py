@@ -25,6 +25,7 @@ def parsing_line(line) -> list:
         #return de la list des elements de la ligne parser
         return list_element_line
 
+#Tri des elemtns de la liste
 def sort_list_to_csv(list_all_data):
     #init de la variable tableau 'list_all_data' qui contien tout les items de la ligne csv
     list_all_element = list_all_data

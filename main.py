@@ -10,11 +10,7 @@ def parsing_line(line) -> list:
     #init de la variable tableau 'list_element_line' qui contien tout les items de la ligne csv
     list_element_line = line
     #Suppression des Colonnes A,D,E,F,G
-    list_element_line.pop(0)
-    list_element_line.pop(2)
-    list_element_line.pop(2)
-    list_element_line.pop(2)
-    list_element_line.pop(2)
+    
     
     #Verifie s'il n'ya pas de cellule vide
     empty = False

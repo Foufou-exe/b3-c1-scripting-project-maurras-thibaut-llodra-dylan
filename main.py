@@ -57,6 +57,7 @@ def write_clean_list_to_csv(list_cleaned):
         writer = csv.writer(csv_file)
         writer.writerows(list_cleaned)
 
+#lire les elements du csv
 def read_csv_line():
     liste_clean = []
     #liste_clean.append(['Appareil suivi', 'ID logement', 'Consommation annuelle Total(AN1+AN2)', 'Type'])

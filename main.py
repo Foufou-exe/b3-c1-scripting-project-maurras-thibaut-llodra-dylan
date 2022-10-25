@@ -25,10 +25,9 @@ def parsing_line(line) -> list:
         return list_element_line
 
 def write_clean_list_to_csv(list_cleaned):
-    if list_cleaned != []:
-        with open(fileout, 'w') as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerows(list_cleaned)
+    with open(fileout, 'w') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerows(list_cleaned)
 
 def read_csv_line():
     liste_clean = []

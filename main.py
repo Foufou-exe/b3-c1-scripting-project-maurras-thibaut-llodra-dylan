@@ -50,11 +50,13 @@ def sort_list_to_csv(list_all_data):
         for item in dico_type[i]:
             list_ordered_item.append(item)
     return list_ordered_item
-
 # Fonction d'écriture dans le nouveau fichier csv
 def write_clean_list_to_csv(list_cleaned):
-    with open(fileout, 'w') as csv_file:
+    #ouvrir le fichier en mode ecriture et enoding en latin-1
+    with open(fileout, 'w', encoding="latin-1") as csv_file:
+        #enregistrement du writer de csv dans une variable
         writer = csv.writer(csv_file)
+        #ecriture de la liste dans le fichier
         writer.writerows(list_cleaned)
 
 #lire les elements du csv

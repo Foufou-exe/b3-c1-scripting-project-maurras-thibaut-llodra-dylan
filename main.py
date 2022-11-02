@@ -26,7 +26,7 @@ def parsing_line(line) -> list:
         return list_element_line
 
 #Tri des elemtns de la liste
-def sort_list_to_csv(list_all_data):
+def sort_list_to_csv(list_all_data) -> list:
     #init de la variable tableau 'list_all_data' qui contien tout les items de la ligne csv
     list_all_element = list_all_data
     #Tri par ordre alphabetique le type des elements de la list
@@ -49,9 +49,12 @@ def sort_list_to_csv(list_all_data):
     for i in sorted(dico_type.keys()):
         for item in dico_type[i]:
             list_ordered_item.append(item)
+    list_ordered_item.insert(0, ['Appareil suivi', 'Consommation annuelle Total(AN1+AN2)', 'Type']) 
     return list_ordered_item
+
+
 # Fonction d'écriture dans le nouveau fichier csv
-def write_clean_list_to_csv(list_cleaned):
+def write_clean_list_to_csv(list_cleaned) -> None:
     #ouvrir le fichier en mode ecriture et enoding en latin-1
     with open(fileout, 'w', encoding="latin-1") as csv_file:
         #enregistrement du writer de csv dans une variable
@@ -60,7 +63,7 @@ def write_clean_list_to_csv(list_cleaned):
         writer.writerows(list_cleaned)
 
 #lire les elements du csv
-def read_csv_line():
+def read_csv_line() -> None:
     liste_clean = []
     #liste_clean.append(['Appareil suivi', 'ID logement', 'Consommation annuelle Total(AN1+AN2)', 'Type'])
     with open(filename, 'r', encoding="latin-1") as csv_file:

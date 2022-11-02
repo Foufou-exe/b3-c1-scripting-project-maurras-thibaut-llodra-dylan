@@ -52,7 +52,6 @@ def sort_list_to_csv(list_all_data) -> list:
     list_ordered_item.insert(0, ['Appareil suivi', 'Consommation annuelle Total(AN1+AN2)', 'Type']) 
     return list_ordered_item
 
-
 # Fonction d'écriture dans le nouveau fichier csv
 def write_clean_list_to_csv(list_cleaned) -> None:
     #ouvrir le fichier en mode ecriture et enoding en latin-1

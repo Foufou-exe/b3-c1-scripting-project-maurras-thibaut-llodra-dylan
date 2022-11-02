@@ -3,12 +3,13 @@ import csv
 import argparse
 import logging
 
-# Option de lancement
+# Configuration du parser avec ses options
 parser = argparse.ArgumentParser(description='INFO : Les options permettent de choisir les fichiers en entrer et en sortie')
 parser.add_argument('-s', '--source', type=str, help='Source du fichier comprenant l\'extension .csv')
 parser.add_argument('-o', '--output', type=str, help='Sortie du fichier comprenant l\'extension .csv')
 arguments = parser.parse_args()
 
+# Configuration du logger
 logging.basicConfig(
         level=logging.DEBUG,
         format="%(asctime)s - %(message)s",

@@ -4,7 +4,6 @@ import argparse
 import logging
 
 # Option de lancement
-
 parser = argparse.ArgumentParser(description='INFO : Les options permettent de choisir les fichiers en entrer et en sortie')
 parser.add_argument('-s', '--source', type=str, help='Source du fichier comprenant l\'extension .csv')
 parser.add_argument('-o', '--output', type=str, help='Sortie du fichier comprenant l\'extension .csv')
@@ -17,7 +16,6 @@ logging.basicConfig(
 )
 
 #variables
-    
 #nom du ficher d'entree
 filename = "conso-annuelles_v1.csv"
 # Verifie si l'argument donne fini par .csv
@@ -111,7 +109,6 @@ def sort_list_to_csv(list_all_data) -> list:
         return list_ordered_item
     except Exception as e:
         logging.error(e)
-
 
 
 # Fonction d'écriture dans le nouveau fichier csv

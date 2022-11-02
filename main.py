@@ -1,8 +1,10 @@
-#import module
+#import module csv pour la lecture et l'ecriture du ficher
 import csv 
 
 #variables
+#nom du ficher d'entree
 filename = "conso-annuelles_v1.csv"
+#nom du ficher de sorti
 fileout = "conso-clean.csv"
 
 #Fonction
@@ -13,18 +15,25 @@ def parsing_line(line) -> list:
     list_element_line.pop(1)
     #Verifie s'il n'ya pas de cellule vide
     empty = False
+    #pour chaque element de la liste de la ligne csv
     for element in list_element_line:
+        #Si la longeur de lelement est 0 (il est nul)
         if len(element) == 0:
+            #changement de la valeur empty pour signaler une ligne vide
             empty = True 
+    #Si il n'y a pas de ligne vide
     if not empty:
         #Addition puis suppression des colonnes annees 1 et 2 puis resulta dans une nouvelle colonne
+        #variable avec le resultat de l'adition des deux colonne annuelle
         annee_total = float(list_element_line[1].replace(',','.').replace('-','0')) + float(list_element_line[2].replace(',','.').replace('-','0'))
+        #suppression de la colone ID_logement
         list_element_line.pop(1)
+        #suppression de la colone Consommation annuelle AN1
         list_element_line.pop(1)
+        #remplacement de la valeur de la colone Consommation annuelle AN2 en colonne totak annees
         list_element_line.insert(1, annee_total)
         #return de la list des elements de la ligne parser
         return list_element_line
-
 #Tri des elemtns de la liste
 def sort_list_to_csv(list_all_data) -> list:
     #init de la variable tableau 'list_all_data' qui contien tout les items de la ligne csv

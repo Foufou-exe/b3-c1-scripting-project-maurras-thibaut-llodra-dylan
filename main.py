@@ -5,23 +5,27 @@ import argparse
 # Option de lancement
 
 parser = argparse.ArgumentParser(description='INFO : Les options permettent de choisir les fichiers en entrer et en sortie')
-parser.add_argument('-s', '--source', type=str, help='Option -s : Source du fichier')
-parser.add_argument('-o', '--output', type=str, help='Option -o : Sortie du fichier')
+parser.add_argument('-s', '--source', type=str, help='Source du fichier comprenant l\'extension .csv')
+parser.add_argument('-o', '--output', type=str, help='Sortie du fichier comprenant l\'extension .csv')
 arguments = parser.parse_args()
+
 
 #variables
     
-filename = "conso-annuelles_v1.csv"
 #nom du ficher d'entree
-if arguments.source:
+filename = "conso-annuelles_v1.csv"
+# Verifie si l'argument donne fini par .csv
+if arguments.source and arguments.source.endswith('.csv') :
     filename = arguments.source
     
-fileout = "conso-clean.csv"
+
 #nom du ficher de sorti
-if arguments.output:
+fileout = "conso-clean.csv"
+# Verifie si l'argument donne fini par .csv
+if arguments.output and arguments.output.endswith('.csv'):
     fileout = arguments.output
 
-
+print(fileout)
 #Fonction
 def parsing_line(line) -> list:
     #init de la variable tableau 'list_element_line' qui contien tout les items de la ligne csv
@@ -125,5 +129,5 @@ def read_csv_line() -> None:
     write_clean_list_to_csv(sort_list_to_csv(liste_clean))
                             
 
-if __name__ == "__main__":
-    read_csv_line()
+# if __name__ == "__main__":
+#     read_csv_line()

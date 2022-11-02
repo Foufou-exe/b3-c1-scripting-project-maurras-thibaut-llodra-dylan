@@ -34,6 +34,7 @@ def parsing_line(line) -> list:
         list_element_line.insert(1, annee_total)
         #return de la list des elements de la ligne parser
         return list_element_line
+    
 #Tri des elemtns de la liste
 def sort_list_to_csv(list_all_data) -> list:
     #init de la variable tableau 'list_all_data' qui contien tout les items de la ligne csv
@@ -101,7 +102,7 @@ def read_csv_line() -> None:
                     #ajoyter a la liste clean declarer au debut la vaiable temp
                     liste_clean.append(liste_clean_temp)
     #le fichier csv se referme apres la lecture de toutes les lignes et envoie le tableau avec toute les ligne parsé dans le trieur puis dans le ficher de sortie
-    write_clean_list_to_csv(sort_list_to_csv(liste_clean))
+    write_clean_list_to_csv(sort_list_to_csv(liste_clean)
+                            
 
-#teste
 read_csv_line()

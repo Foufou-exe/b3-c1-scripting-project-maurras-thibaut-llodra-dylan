@@ -4,17 +4,23 @@ import argparse
 
 # Option de lancement
 
-option = argparse.ArgumentParser(description="INFO : Les options permettent de choisir les fichiers en entrer et en sortie")
-option.add_argument('-s',type=str ,help="Option -s : Source du fichier")
-option.add_argument('-o',type=str ,help="Option -o : Sortie du fichier")
-argument = option.parse_args()
-print(argument.accumulate(argument.integers))
+parser = argparse.ArgumentParser(description='INFO : Les options permettent de choisir les fichiers en entrer et en sortie')
+parser.add_argument('-s', '--source', type=str, help='Option -s : Source du fichier')
+parser.add_argument('-o', '--output', type=str, help='Option -o : Sortie du fichier')
+arguments = parser.parse_args()
 
 #variables
-#nom du ficher d'entree
+    
 filename = "conso-annuelles_v1.csv"
-#nom du ficher de sorti
+#nom du ficher d'entree
+if arguments.source:
+    filename = arguments.source
+    
 fileout = "conso-clean.csv"
+#nom du ficher de sorti
+if arguments.output:
+    fileout = arguments.output
+
 
 #Fonction
 def parsing_line(line) -> list:
@@ -43,6 +49,8 @@ def parsing_line(line) -> list:
         list_element_line.insert(1, annee_total)
         #return de la list des elements de la ligne parser
         return list_element_line
+    
+    
 #Tri des elemtns de la liste
 def sort_list_to_csv(list_all_data) -> list:
     #init de la variable tableau 'list_all_data' qui contien tout les items de la ligne csv
@@ -83,6 +91,8 @@ def sort_list_to_csv(list_all_data) -> list:
     list_ordered_item.insert(0, ['Appareil suivi', 'Consommation annuelle Total(AN1+AN2)', 'Type']) 
     #Retour de la fonction en liste d'elemtn 
     return list_ordered_item
+
+
 # Fonction d'écriture dans le nouveau fichier csv
 def write_clean_list_to_csv(list_cleaned) -> None:
     #ouvrir le fichier en mode ecriture et enoding en latin-1
@@ -91,6 +101,8 @@ def write_clean_list_to_csv(list_cleaned) -> None:
         writer = csv.writer(csv_file)
         #ecriture de la liste dans le fichier
         writer.writerows(list_cleaned)
+
+
 #lire les elements du csv
 def read_csv_line() -> None:
     #creation d'une ligne vide qui va contenir les elements du csv clean
@@ -111,8 +123,7 @@ def read_csv_line() -> None:
                     liste_clean.append(liste_clean_temp)
     #le fichier csv se referme apres la lecture de toutes les lignes et envoie le tableau avec toute les ligne parsé dans le trieur puis dans le ficher de sortie
     write_clean_list_to_csv(sort_list_to_csv(liste_clean))
+                            
 
-read_csv_line()
-
-# if __name__ == "__main__":
-    #read_csv_line()
+if __name__ == "__main__":
+    read_csv_line()

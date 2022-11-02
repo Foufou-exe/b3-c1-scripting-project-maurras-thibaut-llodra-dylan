@@ -1,11 +1,20 @@
 #import module csv pour la lecture et l'ecriture du ficher
 import csv 
+import argparse
 
 #variables
 #nom du ficher d'entree
 filename = "conso-annuelles_v1.csv"
 #nom du ficher de sorti
 fileout = "conso-clean.csv"
+
+# Option de lancement
+
+option = argparse.ArgumentParser(description="INFO : Les options permettent de choisir les fichiers en entrer et en sortie")
+option.add_argument('-s',type=str ,help="Option -s : Source du fichier")
+option.add_argument('-o',type=str ,help="Option -o : Sortie du fichier")
+argument = option.parse_args()
+print(argument.accumulate(argument.integers))
 
 #Fonction
 def parsing_line(line) -> list:
@@ -103,4 +112,6 @@ def read_csv_line() -> None:
     #le fichier csv se referme apres la lecture de toutes les lignes et envoie le tableau avec toute les ligne parsé dans le trieur puis dans le ficher de sortie
     write_clean_list_to_csv(sort_list_to_csv(liste_clean))
 
-read_csv_line()
+
+# if __name__ == "__main__":
+    #read_csv_line()

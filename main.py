@@ -103,5 +103,4 @@ def read_csv_line() -> None:
     #le fichier csv se referme apres la lecture de toutes les lignes et envoie le tableau avec toute les ligne parsé dans le trieur puis dans le ficher de sortie
     write_clean_list_to_csv(sort_list_to_csv(liste_clean))
 
-#bdebdeudnei,
 read_csv_line()

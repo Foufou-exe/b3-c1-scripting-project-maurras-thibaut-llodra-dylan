@@ -1,2 +1,0 @@
-(cree un argument -i pour interactive mode)
-    - fait le parsing puis les affiche en demandant la colone, en demandant le type

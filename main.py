@@ -32,26 +32,39 @@ def sort_list_to_csv(list_all_data) -> list:
     #Tri par ordre alphabetique le type des elements de la list
     # Déclaration d'un dictionnaire vide
     dico_type = {}
-    # Ajout des éléments dans le dictionnaire
+    #Pour chaque liste de data dans la liste d'element
     for data_list in list_all_element:
+            #si le type de l'element est dans le dictionnaire d'element alors
             if data_list[2] in dico_type:
+                #recuperation de la liste des liste des information des element avec comme cle le type dans le dictionnaore
                 list_value_temp = dico_type[data_list[2]]
+                #Ajout a la liste des elements de la cle le nouvelle element qui a le type
                 list_value_temp.append(data_list)
+                #Mise a jour de la valeur de la cle avec la nouvelle liste
                 dico_type[data_list[2]] = list_value_temp
+            #sinon le type de l'element n'est pas dans le dictionnaire d'element alors
             else:
+                #ajout dans le dictionnaire avec comme clé le type de l'element et comme valeur une nouvelle liste avec comme premiere element la lisre avec toutes les information de l'element
                 dico_type[data_list[2]] = [data_list]
-    # Tri des elements par ordre alphabetique
+    # Tri des elements par ordre decroissent de la consomation annuelle
+    #pour chaque clé dans le dictionnaire 
     for key in dico_type:
+        #tri du type de la consommation annuelle dans l'ordre decroissent
         list_keys = sorted(dico_type[key], key=lambda inner_list: inner_list[1], reverse=True)
+        #Mise a jour de la cle avec la nouvelle liste d'element trier
         dico_type[key] = list_keys
+    #creation d'une liste vide
     list_ordered_item = []
-    # Ajouts des elements dans la list trier
+    #Pour chaque cle dans l'ordre alaphabetic du dictionnaire
     for i in sorted(dico_type.keys()):
+        #Pour chaque list d'elemtn pour la valeur de la cle i
         for item in dico_type[i]:
+            #Ajout de la liste dans la liste temp
             list_ordered_item.append(item)
+    #ajout du nom de chque colonne
     list_ordered_item.insert(0, ['Appareil suivi', 'Consommation annuelle Total(AN1+AN2)', 'Type']) 
+    #Retour de la fonction en liste d'elemtn 
     return list_ordered_item
-
 # Fonction d'écriture dans le nouveau fichier csv
 def write_clean_list_to_csv(list_cleaned) -> None:
     #ouvrir le fichier en mode ecriture et enoding en latin-1
@@ -60,18 +73,25 @@ def write_clean_list_to_csv(list_cleaned) -> None:
         writer = csv.writer(csv_file)
         #ecriture de la liste dans le fichier
         writer.writerows(list_cleaned)
-
 #lire les elements du csv
 def read_csv_line() -> None:
+    #creation d'une ligne vide qui va contenir les elements du csv clean
     liste_clean = []
-    #liste_clean.append(['Appareil suivi', 'ID logement', 'Consommation annuelle Total(AN1+AN2)', 'Type'])
+    #ouvre le fichier csv en lecture et avec latin1 en encoding dans le nom de variable = csv_file
     with open(filename, 'r', encoding="latin-1") as csv_file:
+        #cree la varible csv_reader grace au delimiter ; et au fichier ouvert
         csv_reader = csv.reader(csv_file, delimiter = ';')
+        #saute la premiere ligne du fichier csv
         next(csv_reader)
+        #pour chaque ligne du csv executer le code suivant
         for line in csv_reader:
+                #recuperation de la ligne actuelle parsé avec les tri demander et stocker dans une variable
                 liste_clean_temp = parsing_line(line)
+                #si le type de sortie stocker dans la variable est une liste alors 
                 if type(liste_clean_temp) is list:
+                    #ajoyter a la liste clean declarer au debut la vaiable temp
                     liste_clean.append(liste_clean_temp)
+    #le fichier csv se referme apres la lecture de toutes les lignes et envoie le tableau avec toute les ligne parsé dans le trieur puis dans le ficher de sortie
     write_clean_list_to_csv(sort_list_to_csv(liste_clean))
 
 read_csv_line()

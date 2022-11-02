@@ -1,5 +1,14 @@
 #import module csv pour la lecture et l'ecriture du ficher
 import csv 
+import argparse
+
+# Option de lancement
+
+option = argparse.ArgumentParser(description="INFO : Les options permettent de choisir les fichiers en entrer et en sortie")
+option.add_argument('-s',type=str ,help="Option -s : Source du fichier")
+option.add_argument('-o',type=str ,help="Option -o : Sortie du fichier")
+argument = option.parse_args()
+print(argument.accumulate(argument.integers))
 
 #variables
 #nom du ficher d'entree
@@ -106,3 +115,6 @@ def read_csv_line() -> None:
                             
 
 read_csv_line()
+
+# if __name__ == "__main__":
+    #read_csv_line()

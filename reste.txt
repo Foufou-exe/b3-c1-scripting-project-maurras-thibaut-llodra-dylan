@@ -1,5 +1,3 @@
-cree des argument pour les fichier d'entrer et de sorti en dynamic
-cree un argument help
 (cree un argument -i pour interactive mode)
     - fait le parsing puis les affiche en demandant la colone, en demandant le type
 
